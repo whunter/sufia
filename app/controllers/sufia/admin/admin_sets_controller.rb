@@ -1,6 +1,8 @@
 module Sufia
   class Admin::AdminSetsController < ApplicationController
     include CurationConcerns::CollectionsControllerBehavior
+    include Sufia::DenyAccessOverrideBehavior
+    rescue_from CanCan::AccessDenied, with: :deny_access
 
     before_action :ensure_admin!
     load_and_authorize_resource
@@ -64,7 +66,7 @@ module Sufia
       repository_class.new(blacklight_config)
     end
 
-    # Override the default prefixes so that we use the collection partals.
+    # Override the default prefixes so that we use the collection partials.
     def self.local_prefixes
       ["sufia/admin/admin_sets", "collections", 'catalog']
     end
