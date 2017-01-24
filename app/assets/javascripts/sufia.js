@@ -72,6 +72,7 @@
 //= require curation_concerns/file_manager/member
 //= require curation_concerns/file_manager
 //= require sufia/workflow_actions_affix
+//= require sufia/batch_upload_files
 
 // this needs to be after batch_select so that the form ids get setup correctly
 //= require sufia/batch_edit

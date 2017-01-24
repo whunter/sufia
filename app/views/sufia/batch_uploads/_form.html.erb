@@ -11,5 +11,9 @@
 <script type="text/javascript">
   Blacklight.onLoad(function() {
     $("#fileupload").fileupload('option', 'downloadTemplateId', 'batch-template-download')
+    $("#fileupload").bind('fileuploadcompleted', function (e, data) {
+        var setAllResourceTypes = require('sufia/batch_upload_files').setAllResourceTypes;
+        $(".resource_type_button").click(setAllResourceTypes);
+    });
   });
 </script>
